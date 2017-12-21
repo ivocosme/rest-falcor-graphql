@@ -1,4 +1,4 @@
-# node-go-comparison
+# rest-falcor-graphql
 
 ## Quick Summary
 
