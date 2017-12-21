@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
+  <link rel="stylesheet" href="css/index.css" type="text/css"> </head>
+
+<body>
+  <div class="py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 py-5">
+          <h1 class="text-center">REST</h1>
+          <p class="lead text-center">Web</p>
+          <div class="border">
+            <iframe src="http://localhost:3000/rest-web.html" scrollable="auto" class="w-100 style" frameborder="0" height="300px"></iframe>
+          </div>
+          <p class="lead text-center">Mobile</p>
+          <div class="border">
+            <iframe src="http://localhost:3000/rest-mobile.html" scrollable="auto" class="w-100 style" frameborder="0" height="300px"></iframe>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <h1 class="text-center">Falcor</h1>
+          <p class="lead text-center">Web</p>
+          <div class="border">
+            <iframe src="http://localhost:3000/falcor-web.html" scrollable="auto" class="w-100 style" frameborder="0" height="300px"></iframe>
+          </div>
+          <p class="lead text-center">Mobile</p>
+          <div class="border">
+            <iframe src="http://localhost:40000/model.json?customer=1&paths=%5B%5B%22customer%22%2C%5B%22address%22%2C%22customerId%22%2C%22email%22%2C%22extraInfoWeb1%22%2C%22extraInfoWeb2%22%2C%22extraInfoWeb3%22%2C%22invoices%22%2C%22name%22%5D%5D%5D&method=get" scrollable="auto" class="w-100 style" frameborder="0" height="300px"></iframe>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12 py-5">
+          <h1 class="text-center">GraphQL</h1>
+          <p class="lead text-center">Web</p>
+          <div class="border">
+            <iframe src="http://localhost:40001/?query=%0Aquery%20TestQuery(%24customerId%3A%20String!%2C%20%24isMobile%3ABoolean!)%20%7B%0A%09customer(id%3A%24customerId)%20%7B%0A%09%09customerId%2C%0A%20%20%20%20email%2C%0A%20%20%20%20name%2C%0A%20%20%20%20address%2C%0A%20%20%20%20extraInfoMobile1%20%40include(if%3A%20%24isMobile)%2C%0A%20%20%20%20extraInfoMobile2%20%40include(if%3A%20%24isMobile)%2C%0A%20%20%20%20extraInfoMobile3%20%40include(if%3A%20%24isMobile)%2C%0A%20%20%20%20extraInfoWeb1%20%40skip(if%3A%20%24isMobile)%2C%0A%20%20%20%20extraInfoWeb2%20%40skip(if%3A%20%24isMobile)%2C%0A%20%20%20%20extraInfoWeb3%20%40skip(if%3A%20%24isMobile)%2C%0A%20%20%20%20invoices%20%7B%0A%20%20%20%20%20%20invoiceId%2C%0A%20%20%20%20%20%20date%2C%0A%20%20%20%20%20%20quantity%2C%0A%20%20%20%20%20%20totalAmount%0A%20%20%20%20%7D%0A%09%7D%0A%7D&operationName=TestQuery&variables=%7B%0A%20%20%22customerId%22%3A%20%221%22%2C%0A%20%20%22isMobile%22%3A%20false%20%0A%7D" scrollable="auto" class="w-100 style" frameborder="0" height="300px"></iframe>
+          </div>
+          <p class="lead text-center">Mobile</p>
+          <div class="border">
+            <iframe src="http://localhost:40001/?query=query%20TestQuery(%24customerId%3A%20String!%2C%20%24isMobile%3ABoolean!)%20%7B%0A%09customer(id%3A%24customerId)%20%7B%0A%09%09customerId%2C%0A%20%20%20%20email%2C%0A%20%20%20%20name%2C%0A%20%20%20%20address%2C%0A%20%20%20%20extraInfoMobile1%20%40include(if%3A%20%24isMobile)%2C%0A%20%20%20%20extraInfoMobile2%20%40include(if%3A%20%24isMobile)%2C%0A%20%20%20%20extraInfoMobile3%20%40include(if%3A%20%24isMobile)%2C%0A%20%20%20%20extraInfoWeb1%20%40skip(if%3A%20%24isMobile)%2C%0A%20%20%20%20extraInfoWeb2%20%40skip(if%3A%20%24isMobile)%2C%0A%20%20%20%20extraInfoWeb3%20%40skip(if%3A%20%24isMobile)%2C%0A%20%20%20%20invoices%20%7B%0A%20%20%20%20%20%20invoiceId%2C%0A%20%20%20%20%20%20date%2C%0A%20%20%20%20%20%20quantity%2C%0A%20%20%20%20%20%20totalAmount%0A%20%20%20%20%7D%0A%09%7D%0A%7D&operationName=TestQuery&variables=%7B%0A%20%20%22customerId%22%3A%20%221%22%2C%0A%20%20%22isMobile%22%3A%20true%20%0A%7D" class="w-100 style" frameborder="0" height="300px" scrollable="auto"></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

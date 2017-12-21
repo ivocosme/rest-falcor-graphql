@@ -1,0 +1,33 @@
+<html>
+    <head>
+      <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.4/lodash.min.js"></script>
+      <script>
+          axios.get('http://localhost:50000/1')
+            .then(function (response) {
+                var originarCustomer = response.data;
+                //Filter unwanted mobile data.
+                var customer = _.omit(originarCustomer, ['extraInfoMobile1', 'extraInfoMobile2', 'extraInfoMobile3', 'invoices']);
+                var invoicePromises = [];
+                //For each retrieved invoice id, please go get its information.
+                _.forEach(originarCustomer.invoices, (invoiceId) => {
+                    invoicePromises.push(axios.get('http://localhost:50001/'+invoiceId));
+                });
+                axios.all(invoicePromises)
+                    //Then, when we have all invoices' details, we merge them into the original json and write the document to screen.
+                    .then((invoices) => {
+                        invoices = _.map(invoices, (invoiceResponse) =>{
+                            return invoiceResponse.data;
+                        });
+                        customer.invoices = invoices;
+                        document.write(JSON.stringify(customer));
+                    });
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+        
+      </script>
+    </head>
+  <body/>
+</html>
